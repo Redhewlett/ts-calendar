@@ -1,34 +1,46 @@
-import { formatOptions, locales } from "./types.ts";
+import { formatOptions, locales, calendar } from "./types.ts";
 
 const defaultFormatOptions: formatOptions = {
   weekday: "long",
   month: "long",
   day: "2-digit",
   year: "numeric",
+  firstDay: 'Monday'
 };
 
+/**
+ * 
+ * @param year number the year
+ * @param month number the month from 0 to 11
+ * @param locale the locale to use
+ * @param format the format to use
+ * @returns calendar
+ */
 export function generateCalendar(
   year: number,
   month: number,
   locale: locales  = locales.ENUS,
   format: formatOptions = defaultFormatOptions,
 ) {
-  // we dont need to work with local time since we are not interested in the time
-  // we only want the days, dates and months, we will never return time
-  // the +1 is to make sure we get the last day of the month because js rolls back to the previous month
   const daysInMonth = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
   const _firstDay = new Date(Date.UTC(year, month, 1)).getDay();
-  // using that logic we can get the last day of the previous month aka number of days in the previous month
+
   const lastDayPreviousMonth = new Date(Date.UTC(year, month, 0)).getDate();
-  const lastDayIndex = new Date(Date.UTC(year, month - 1, lastDayPreviousMonth))
+  let lastDayPreviousMonthIndex = new Date(Date.UTC(year, month - 1, lastDayPreviousMonth))
     .getDay();
+
   const _firstDayNextMonth = new Date(Date.UTC(year, month + 1, 1)).getDate();
-  const firstDayIndex = new Date(Date.UTC(year, month + 1, 1)).getDay();
+  let firstDayNextMonthIndex = new Date(Date.UTC(year, month + 1, 1)).getDay();
 
   const calendarDates = new Array<string>();
   const calendarWeeks = new Array<Array<string>>();
 
-  for (let j = lastDayIndex; j >= 0; j--) {
+  if (format.firstDay === 'Monday') {
+    lastDayPreviousMonthIndex = lastDayPreviousMonthIndex - 1;
+    firstDayNextMonthIndex = firstDayNextMonthIndex - 1;
+  }
+
+  for (let j = lastDayPreviousMonthIndex; j >= 0; j--) {
     const date = new Date(Date.UTC(year, month - 1, lastDayPreviousMonth - j))
       .toLocaleString(locale, format);
     calendarDates.push(date);
@@ -42,23 +54,23 @@ export function generateCalendar(
     calendarDates.push(date);
   }
 
-  for (let k = 0; k <= 6 - firstDayIndex; k++) {
+  for (let k = 0; k <= 6 - firstDayNextMonthIndex; k++) {
     const date = new Date(Date.UTC(year, month + 1, k + 1)).toLocaleString(
       locale,
       format,
     );
     calendarDates.push(date);
   }
-
+  
   const numberOfWeeks = Math.ceil(calendarDates.length / 7);
+  
   for (let i = 0; i < numberOfWeeks; i++) {
     calendarWeeks.push(calendarDates.slice(i * 7, i * 7 + 7));
   }
   
   const monthName = returnMonthName(month, locale);
-
-  console.log(calendarWeeks, calendarDates);
-  console.log(monthName);
+  
+  console.log(calendarWeeks)
 
   return {
     month: monthName,
@@ -73,4 +85,4 @@ function returnMonthName(month: number, locale: locales) {
   });
 }
 
-generateCalendar(2025, 3, locales.FRFR);
+generateCalendar(2025, 3, locales.FRFR)

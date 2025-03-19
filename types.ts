@@ -59,4 +59,11 @@ export interface formatOptions {
   month: "short" | "long" | "narrow" | "numeric" | "2-digit";
   day: "numeric" | "2-digit";
   year?: "numeric" | "2-digit"; // we can ommit this one
+  firstDay?: "Sunday" | "Monday";
+}
+
+export interface calendar {
+  month: string;
+  calendarDates: Array<string>;
+  calendarWeeks: Array<Array<string>>;
 }
