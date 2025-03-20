@@ -1,4 +1,5 @@
-import { calendar, formatOptions, locales } from "./types.ts";
+import type { calendar, formatOptions } from "./types.ts";
+import { locales } from "./types.ts";
 
 const defaultFormatOptions: formatOptions = {
   weekday: "long",
@@ -13,7 +14,7 @@ const defaultFormatOptions: formatOptions = {
  * @param month number the month from 0 to 11
  * @param locale the locale to use
  * @param format the format to use
- * @returns calendar feature the monthname,
+ * @returns calendar object featuring the monthname,
  * an array with all the month dates,
  * and an array with all the weeks of the month
  */
@@ -85,5 +86,3 @@ function returnMonthName(month: number, locale: locales) {
     month: "long",
   });
 }
-
-generateCalendar(2025, 3, locales.FRFR);
