@@ -14,14 +14,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
         with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm install
+          deno-version: v2.2.4 
 
       - name: Run tests
-        run: npm test
+        run: deno test 
 
