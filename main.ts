@@ -1,32 +1,35 @@
-import { formatOptions, locales, calendar } from "./types.ts";
+import { calendar, formatOptions, locales } from "./types.ts";
 
 const defaultFormatOptions: formatOptions = {
   weekday: "long",
   month: "long",
   day: "2-digit",
   year: "numeric",
-  firstDay: 'Monday'
+  firstDay: "Monday",
 };
 
 /**
- * 
  * @param year number the year
  * @param month number the month from 0 to 11
  * @param locale the locale to use
  * @param format the format to use
- * @returns calendar
+ * @returns calendar feature the monthname,
+ * an array with all the month dates,
+ * and an array with all the weeks of the month
  */
 export function generateCalendar(
   year: number,
   month: number,
-  locale: locales  = locales.ENUS,
+  locale: locales = locales.ENUS,
   format: formatOptions = defaultFormatOptions,
-) {
+): calendar {
   const daysInMonth = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
   const _firstDay = new Date(Date.UTC(year, month, 1)).getDay();
 
   const lastDayPreviousMonth = new Date(Date.UTC(year, month, 0)).getDate();
-  let lastDayPreviousMonthIndex = new Date(Date.UTC(year, month - 1, lastDayPreviousMonth))
+  let lastDayPreviousMonthIndex = new Date(
+    Date.UTC(year, month - 1, lastDayPreviousMonth),
+  )
     .getDay();
 
   const _firstDayNextMonth = new Date(Date.UTC(year, month + 1, 1)).getDate();
@@ -35,7 +38,7 @@ export function generateCalendar(
   const calendarDates = new Array<string>();
   const calendarWeeks = new Array<Array<string>>();
 
-  if (format.firstDay === 'Monday') {
+  if (format.firstDay === "Monday") {
     lastDayPreviousMonthIndex = lastDayPreviousMonthIndex - 1;
     firstDayNextMonthIndex = firstDayNextMonthIndex - 1;
   }
@@ -61,16 +64,14 @@ export function generateCalendar(
     );
     calendarDates.push(date);
   }
-  
+
   const numberOfWeeks = Math.ceil(calendarDates.length / 7);
-  
+
   for (let i = 0; i < numberOfWeeks; i++) {
     calendarWeeks.push(calendarDates.slice(i * 7, i * 7 + 7));
   }
-  
+
   const monthName = returnMonthName(month, locale);
-  
-  console.log(calendarWeeks)
 
   return {
     month: monthName,
@@ -85,4 +86,4 @@ function returnMonthName(month: number, locale: locales) {
   });
 }
 
-generateCalendar(2025, 3, locales.FRFR)
+generateCalendar(2025, 3, locales.FRFR);
