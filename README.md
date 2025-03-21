@@ -1,5 +1,6 @@
-# TS-Calendar
-![Static Badge](https://img.shields.io/badge/deno-v2.2.3-rgb(112%2C%20255%2C%20175)) <img src="https://img.shields.io/badge/License-MIT-blue.svg"></br>
+# TS-Calendar <img src="https://jsr.io/badges/@redh-pkg/ts-calendar"> <img src="https://jsr.io/badges/@redh-pkg/ts-calendar/score"> 
+![Static Badge](https://img.shields.io/badge/deno-v2.2.3-rgb(112%2C%20255%2C%20175)) <img src="https://img.shields.io/badge/License-MIT-blue.svg"> 
+</br>
 TS-Calendar main function generates a monthly calendar with the parameter you pass
 
 
