@@ -5,5 +5,9 @@
   "imports": {
     "@std/assert": "jsr:@std/assert@1"
   },
-  "exports": "./mod.ts"
+  "exports": "./mod.ts",
+  "exclude": [
+    "main_test.ts",".git", ".github",
+    "deno.lock"
+  ]
 }
