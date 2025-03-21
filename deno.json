@@ -1,0 +1,13 @@
+{
+  "name": "@redh-pkg/ts-calendar",
+  "version": "0.1.0",
+  "license": "MIT",
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  },
+  "exports": "./mod.ts",
+  "exclude": [
+    ".git", ".github",
+    "deno.lock"
+  ]
+}
