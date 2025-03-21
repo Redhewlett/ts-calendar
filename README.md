@@ -42,14 +42,14 @@ Then here is an example of the main function:
 import type { generateCalendar, formatOptions, locales } from "jsr:@redh-pkg/ts-calendar";
 
 // lets specify our options
-const formatOptions: formatOptions = {
+const format: formatOptions = {
   weekday: "long",
   month: "long",
   day: "2-digit",
   firstDay: "Monday",
 };
 // lets generate a calendar for febuary 2024
-const calendar = generateCalendar(2024, 1, locales.ENUS, formatOptions);
+const calendar = generateCalendar(2024, 1, locales.ENUS, format);
 ```
 
 Considering the formatOptions object the expected output should be:
