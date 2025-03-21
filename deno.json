@@ -7,7 +7,7 @@
   },
   "exports": "./mod.ts",
   "exclude": [
-    "main_test.ts",".git", ".github",
+    ".git", ".github",
     "deno.lock"
   ]
 }
