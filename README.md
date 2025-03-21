@@ -7,27 +7,27 @@ TS-Calendar main function generates a monthly calendar with the parameter you pa
 ## 🖥️ Adding the package
 ```console
 
-deno add jsr:@red/ts-calendar
+deno add jsr:@redh-pkg/ts-calendar
 
 ```
 
 ```console
-npx jsr add @red/ts-calendar
+npx jsr add @redh-pkg/ts-calendar
 
 ```
 
 ```console
-yarn dlx jsr add @red/ts-calendar
+yarn dlx jsr add @redh-pkg/ts-calendar
 
 ```
 
 ```console
-pnpm dlx jsr add @red/ts-calendar
+pnpm dlx jsr add @redh-pkg/ts-calendar
 
 ```
 
 ```console
-bunx jsr add @red/ts-calendar
+bunx jsr add @redh-pkg/ts-calendar
 
 ```
 
@@ -38,7 +38,7 @@ For npm and npm-compatible package managers, the jsr command will add the depend
 
 Then here is an example of the main function
 ```typescript
-import type { generateCalendar, formatOptions, locales } from "@red/ts-calendar";
+import type { generateCalendar, formatOptions, locales } from "@redh-pkg/ts-calendar";
 
 // lets specify our options
 const formatOptions: formatOptions = {
