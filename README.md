@@ -39,7 +39,7 @@ For npm and npm-compatible package managers, the jsr command will add the depend
 
 Then here is an example of the main function:
 ```typescript
-import type { generateCalendar, formatOptions, locales } from "@redh-pkg/ts-calendar";
+import type { generateCalendar, formatOptions, locales } from "jsr:@redh-pkg/ts-calendar";
 
 // lets specify our options
 const formatOptions: formatOptions = {
