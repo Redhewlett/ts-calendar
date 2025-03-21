@@ -32,11 +32,11 @@ bunx jsr add @redh-pkg/ts-calendar
 ```
 
 ## ⌨️ Usage
-Once the package is added:
-If you’re using Deno, the deno add command will add an import map entry for the JSR module you specified in a deno.json file. 
-For npm and npm-compatible package managers, the jsr command will add the dependency to your package.json file, along with a .npmrc file to your project root with the necessary config to use JSR with npm. Learn more about JSR’s npm compatibility layer.
+Once the package is added: </br>
+If you’re using Deno, the deno add command will add an import map entry for the JSR module you specified in a deno.json file. </br></br>
+For npm and npm-compatible package managers, the jsr command will add the dependency to your package.json file, along with a .npmrc file to your project root with the necessary config to use JSR with npm. <a href="https://jsr.io/docs/troubleshooting#publishing-errors">Learn more about JSR’s npm compatibility layer</a>.
 
-Then here is an example of the main function
+Then here is an example of the main function:
 ```typescript
 import type { generateCalendar, formatOptions, locales } from "@redh-pkg/ts-calendar";
 
@@ -51,7 +51,7 @@ const formatOptions: formatOptions = {
 const calendar = generateCalendar(2024, 1, locales.ENUS, formatOptions);
 ```
 
-Considering the formatOptions object the expected output should be
+Considering the formatOptions object the expected output should be:
 ```typescript
 {
   month: "february",
